@@ -1,0 +1,29 @@
+FROM ubuntu:18.04
+
+MAINTAINER David Brown
+
+RUN apt-get update && apt-get -y upgrade
+
+RUN apt-get install -y software-properties-common
+RUN add-apt-repository ppa:deadsnakes/ppa
+RUN apt-get install -y python3.7 python3-pip
+
+ENV STAVANET_SRC=app
+ENV STAVANET_SRVHOME=/srv
+ENV STAVANET_SRVPROJ=$STAVANET_SRVHOME/$STAVANET_SRC
+
+COPY $STAVANET_SRC $STAVANET_SRVPROJ
+
+COPY requirements.txt $STAVANET_SRVHOME/requirements.txt
+RUN pip3 install -r $STAVANET_SRVHOME/requirements.txt
+
+RUN mkdir $STAVANET_SRVHOME/logs
+VOLUME ["$STAVANET_SRVHOME/logs/"]
+
+EXPOSE 8000
+
+WORKDIR $STAVANET_SRVPROJ
+
+STOPSIGNAL SIGINT
+ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
