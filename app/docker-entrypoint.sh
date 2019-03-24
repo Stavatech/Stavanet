@@ -2,7 +2,7 @@
 python3 manage.py migrate
 
 # Start Gunicorn processes
-if [ "$ENVIRONMENT" = "production" ] ; then
+if [ "$STAGE" = "production" ] ; then
     python3 manage.py collectstatic --no-input
     
     # Prepare log files and start outputting logs to stdout
