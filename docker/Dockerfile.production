@@ -25,5 +25,5 @@ EXPOSE 8000
 WORKDIR $STAVANET_SRVPROJ
 
 STOPSIGNAL SIGINT
-ENTRYPOINT ["./docker-entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "docker-entrypoint.sh"]
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
