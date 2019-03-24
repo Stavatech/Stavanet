@@ -10,7 +10,7 @@ Build and run with:
 build.sh && run.sh
 ```
 
-Now develop to your heart's content - the service will reload whenever you save.
+Now develop to your heart's content - the service will reload with your changes whenever you save.
 
 ### Production
 
