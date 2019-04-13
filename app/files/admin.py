@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import File, FileGroupAccessPermission, FileSyncStatus, FileUserAccessPermission, FileVersion
 
-# Register your models here.
+admin.site.register(File)
+admin.site.register(FileGroupAccessPermission)
+admin.site.register(FileSyncStatus)
+admin.site.register(FileUserAccessPermission)
+admin.site.register(FileVersion)
