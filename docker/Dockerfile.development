@@ -12,8 +12,6 @@ ENV STAVANET_SRC=app
 ENV STAVANET_SRVHOME=/srv
 ENV STAVANET_SRVPROJ=$STAVANET_SRVHOME/$STAVANET_SRC
 
-RUN mkdir -p $STAVANET_SRVHOME/logs
-
 COPY requirements.txt $STAVANET_SRVHOME/requirements.txt
 RUN pip3 install -r $STAVANET_SRVHOME/requirements.txt
 
