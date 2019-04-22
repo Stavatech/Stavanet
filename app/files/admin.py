@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import File, FileGroupAccessPermission, FileSyncStatus, FileUserAccessPermission, FileVersion
+from .models import Directory, File, FileGroupAccessPermission, FileSyncStatus, FileUserAccessPermission, FileVersion
 
+admin.site.register(Directory)
 admin.site.register(File)
 admin.site.register(FileGroupAccessPermission)
 admin.site.register(FileSyncStatus)

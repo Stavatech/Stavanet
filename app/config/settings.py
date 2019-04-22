@@ -123,3 +123,14 @@ USE_TZ = True
 
 STATIC_URL = '/django/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+
+# files app config
+FILE_SVC = {
+    'service_args': {
+        'storage_adapter': 'files.service.adapters.local_storage_service.LocalStorageAdapter',
+        'files_dao': 'files.service.dao.django.files.DjangoFileDAO',
+        'root_path': '/tmp/stavanet'
+    },
+    'secondary_storage_adapters': []
+}
