@@ -47,6 +47,10 @@ class DjangoFileDAO(object):
     def get_directories(self, path) -> list:
         directories = Directory.objects.filter(parent__path=path)
         return self._transform_directories(directories)
+    
+    def get_file(self, id) -> FileModel:
+        file_obj = File.objects.get(current_version__id=id)
+        return self._transform_file(file_obj)
 
     def get_files(self, path) -> list:
         files = File.objects.filter(current_version__directory__path=path)

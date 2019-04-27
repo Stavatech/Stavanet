@@ -18,13 +18,13 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
-from rest_framework.schemas import get_schema_view
+from rest_framework_swagger.views import get_swagger_view
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/health/', include('health.urls')),
     path('api/files/', include('files.urls')),
-    path('api/', get_schema_view()),
+    path('api/', get_swagger_view(title='Stavanet API')),
     path('', include('webapp.urls')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -43,4 +43,8 @@ class FileService(object):
     
     def list_directory(self, path) -> list:
         return self.file_dao.list_directory(path)
-       
+    
+    def get_file(self, id) -> (File, object):
+        file_entry = self.file_dao.get_file(id)
+        file_path = os.path.join(self.root_path, file_entry.id)
+        return file_entry, self.storage_adapter.get_file(file_path)
